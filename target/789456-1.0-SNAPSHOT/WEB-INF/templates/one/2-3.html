@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>校友录管理端</title>
+    <link rel="shortcut icon" href="img/head.png" type="image/x-icon">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <script src="/789456/static/js/jquery-1.12.4.min.js"></script>
+    <script src="/789456/static/js/layui.js"></script>
+    <script src="/789456/static/js/updateuser.js"></script>
+
+
+    <link rel="stylesheet" href="/789456/static/css/layui.css" media="all">
+</head>
+<body>
+
+
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header">
+        <div class="layui-logo">校友录管理端</div>
+        <!-- 头部区域（可配合layui 已有的水平导航） -->
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item">
+                <a href="javascript:;">
+                    <img id="headurl" src="img/head.png" class="layui-nav-img">
+                    <span id="adminid">测试用户</span>
+                </a>
+                <dl class="layui-nav-child">
+                    <dd><a href="">set 1</a></dd>
+                    <dd><a href="">set 2</a></dd>
+                </dl>
+            </li>
+            <li class="layui-nav-item"><a href="http://localhost:8080/789456/">退出</a></li>
+        </ul>
+    </div>
+
+
+    <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll">
+            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+            <ul class="layui-nav layui-nav-tree" lay-filter="test">
+                <li class="layui-nav-item"><a href="http://localhost:8080/789456/home">主页</a></li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">系统管理</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="http://localhost:8080/789456/admin">用户综合管理</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a href="javascript:;">用户管理</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="http://localhost:8080/789456/select">用户信息浏览</a></dd>
+                        <dd><a href="http://localhost:8080/789456/del">删除班级成员</a></dd>
+                        <dd class="layui-this"><a href="http://localhost:8080/789456/update">用户信息修改</a></dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="layui-body" style="background-color: #F6F6F6;">
+        <!-- 内容主体区域 -->
+        <div style="padding: 20px;padding-top: 10px;">
+
+            <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief" style="margin-top: 0px;">
+                <ul class="layui-tab-title">
+                    <li class="layui-this">用户信息修改</li>
+
+                </ul>
+                <div class="layui-tab-content">
+                    <div class="layui-tab-item layui-show">
+                        <div style="width: 500px;height: 500px; ">
+                            <div class="layui-card">
+                                <div class="layui-card-header">用户信息验证</div>
+                                <form class="layui-form" action="">
+                                    <div class="layui-form-item">
+                                        <label class="layui-form-label">姓名</label>
+                                        <div class="layui-input-block">
+                                            <input type="text" name="title" id="userName" lay-verify="title" autocomplete="off"
+                                                   placeholder="请输入姓名" class="layui-input">
+                                        </div>
+                                        <label><button style="background-color: #0000FF" class="layui-btn" lay-submit="" lay-filter="demo1" id="select">显示如下信息</button></label>
+                                    </div>
+
+                                    <div class="layui-form-item">
+                                        <label class="layui-form-label">大学</label>
+                                        <div class="layui-input-block">
+                                            <input type="text" name="college" lay-verify="title" autocomplete="off"
+                                                   placeholder="请输入大学名称" class="layui-input" id="collegeName">
+                                        </div>
+                                    </div>
+
+                                    <div class="layui-form-item">
+                                        <label class="layui-form-label">高中</label>
+                                        <div class="layui-input-block">
+                                            <input type="text" name="highschool" lay-verify="title" autocomplete="off"
+                                                   placeholder="请输入高中名称" class="layui-input" id="highschoolName">
+                                        </div>
+                                    </div>
+
+                                    <div class="layui-form-item">
+                                        <div class="layui-inline">
+                                            <label class="layui-form-label" >手机号码</label>
+                                            <div class="layui-input-inline">
+                                                <input type="tel" name="phone" lay-verify="required|phone"
+                                                       autocomplete="off" class="layui-input" id="tele">
+                                            </div>
+                                        </div>
+                                        <div class="layui-inline">
+                                            <label class="layui-form-label">地址</label>
+                                            <div class="layui-input-inline">
+                                                <input type="text" name="address" lay-verify="email" autocomplete="off"
+                                                       class="layui-input" id="address">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="layui-form-item">
+                                        <label class="layui-form-label">性别</label>
+                                        <div class="layui-input-block">
+                                            <input type="text" name="sex" id="sex" lay-verify="email" autocomplete="off"
+                                                   class="layui-input" placeholder="男/女">
+                                        </div>
+                                    </div>
+
+
+                                    <div class="layui-form-item">
+                                        <div class="layui-input-block">
+                                            <button type="submit" class="layui-btn" lay-submit="" lay-filter="demo1" id="update">
+                                                立即修改
+                                            </button>
+                                            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="layui-tab-item">
+        <div style="width: 500px;height: 500px; ">
+            <div class="layui-card">
+                <div class="layui-card-header">用户信息</div>
+                <div class="layui-card-body">
+                    <form class="layui-form" action="">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">用户名</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="title" required lay-verify="required" placeholder="请输入标题"
+                                       autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">密码</label>
+                            <div class="layui-input-block">
+                                <input type="password" name="password" required lay-verify="required"
+                                       placeholder="请输入密码" autocomplete="off"
+                                       class="layui-input">
+                            </div>
+
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">确认密码</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="title" required lay-verify="required" placeholder="请输入标题"
+                                       autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">级别</label>
+                            <div class="layui-input-block">
+                                <select name="city" lay-verify="required">
+                                    <option value=""></option>
+                                    <option value="0">学生</option>
+                                    <option value="1">宿管</option>
+                                    <option value="2">辅导员</option>
+
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="layui-form-item">
+                            <div class="layui-input-block">
+                                <button class="layui-btn" lay-submit lay-filter="formDemo">提交</button>
+                                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+</div>
+
+</div>
+
+</div>
+
+
+</div>
+
+
+</div>
+<script src="/789456/static/js/layui.js" charset="utf-8"></script>
+
+</body>
+</html>

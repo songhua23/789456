@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.UserMapper">
+    <select id="getUser" resultType="user">
+    select `userID`,`sex`,`collegeName`,`highschoolName`,`address`,`tele`,`userName` from `user`;
+    </select>
+
+
+    <select id="getUserDetail" resultType="user">
+        select `userID`,`sex`,`collegeName`,`highschoolName`,`address`,`tele`,`userName` from `user` where `head`=#{head};
+    </select>
+
+    <select id="getUserDetailByname" resultType="user">
+        select `sex`,`userName`,`head`,`highschoolName`,`collegeName`,`address`,`tele` from `user` where `userName`=#{userName};
+    </select>
+
+    <select id="getUserDetailByid" resultType="user">
+        select `sex`,`userName`,`head`,`highschoolName`,`collegeName`,`address`,`tele` from `user` where `userID`=#{userID};
+    </select>
+
+    <update id="updataUser">
+        update `user` set `collegeName`=#{collegeName},`highschoolName`=#{highschoolName},`address`=#{address},`tele`=#{tele};
+    </update>
+
+    <update id="newUser">
+        update `user` set `collegeName`=#{collegeName},`highschoolName`=#{highschoolName},`address`=#{address},`tele`=#{tele},`sex`=#{sex} where userID=#{userID};
+    </update>
+
+    <delete id="delUserDetailByid">
+        DELETE FROM `user` where `userID` = #{userID}
+    </delete>
+
+    <insert id="Login">
+        INSERT INTO `user` (`sex`,`head`,`openID`,`userName`)
+        VALUES (#{sex},#{head},#{openID},#{userName})
+    </insert>
+</mapper>
